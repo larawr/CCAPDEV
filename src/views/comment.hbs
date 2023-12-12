@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comment on Post - pinkkit</title>
+    <link rel="stylesheet" href="static/css/commentsyle.css">
+    <script src="static/js/index.js" defer> </script>
+    <script src="static/js/forms.js" defer> </script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+             <ul>
+    <li class="active"><a href="/home">Home</a></li>
+    <li><a href="/login" id="login">Login</a></li>
+    <li><a href="/register" id="register">Register</a></li>
+    <li><a href="/logout" id="logout">Logout</a></li>
+    <li><a href="/editprofile" id="editprofile">Edit Profile</a></li>
+</ul>
+        </nav>
+        <h1>Comment on Post</h1>
+    </header>
+
+    <section class="container">
+        <article class="post">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed ornare urna, eu dictum risus. Aenean sed quam sed augue feugiat mollis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam id rutrum libero. Nunc vel odio euismod nisl malesuada elementum id eu tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec malesuada ullamcorper tortor, quis blandit nibh consequat quis. Quisque semper feugiat sapien, vitae consequat magna commodo et. Donec rutrum a mi at blandit.</p>
+        </article>
+
+        <h2>Comments</h2>
+
+        <ul class="comments">
+            <li class="comment">
+                <p><strong>Commenter1:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed ornare urna, eu dictum risus.</p>
+
+                <ul class="subcomments">
+                    <li class="comment">
+                        <p><strong>Commenter2:</strong> Aenean sed quam sed augue feugiat mollis.</p>
+
+                        <ul class="subcomments">
+                            <li class="comment">
+                                <p><strong>Commenter1:</strong> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="comment">
+                <p><strong>Commenter3:</strong> Nam id rutrum libero. Nunc vel odio euismod nisl malesuada elementum id eu tellus.</p>
+            </li>
+        </ul>
+
+        <form class="comment-form" action="#" method="POST">
+            <label for="comment-body">Leave a comment:</label>
+            <textarea name="comment-body" id="comment-body" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 pinkkit. All rights reserved.</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/69c55ad5c0.js" crossorigin="anonymous"></script>
+</body>
+</html>

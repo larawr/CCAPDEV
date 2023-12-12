@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/css/registerstyle.css">
+    <script src="static/js/index.js" defer> </script>
+    <script src="static/js/forms.js" defer> </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Registration - pinkkit</title>
+</head>
+<body>
+    <header>
+        <nav>
+             <ul>
+    <li class="active"><a href="/home">Home</a></li>
+    <li><a href="/login" id="login">Login</a></li>
+    <li><a href="/register" id="register">Register</a></li>
+    <li><a href="/logout" id="logout">Logout</a></li>
+    <li><a href="/editprofile" id="editprofile">Edit Profile</a></li>
+</ul>
+        </nav>
+        <h1>Registration - pinkkit</h1>
+    </header>
+
+    <section class="container">
+    <form class="registration-form" action="/register" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+
+        <input type="submit" value="Register">
+    </form>
+
+    <script>
+        // JavaScript function to redirect to home after form submission
+        function redirectToHome() {
+            // You can customize this URL or handle the redirection as needed
+            window.location.href = '/home';
+            return false; // Prevent the default form submission
+        }
+    </script>
+</section>
+
+</section>
+
+
+    <footer>
+        <p>&copy; 2023 pinkkit. All rights reserved.</p>
+    </footer>
+</body>
+</html>

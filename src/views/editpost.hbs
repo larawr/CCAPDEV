@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit / Delete Post - pinkkit</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="static/js/index.js" defer> </script>
+    <script src="static/js/forms.js" defer> </script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+             <ul>
+    <li class="active"><a href="/home">Home</a></li>
+    <li><a href="/login" id="login">Login</a></li>
+    <li><a href="/register" id="register">Register</a></li>
+    <li><a href="/logout" id="logout">Logout</a></li>
+    <li><a href="/editprofile" id="editprofile">Edit Profile</a></li>
+</ul>
+        </nav>
+        <h1>Edit / Delete Post</h1>
+    </header>
+
+    <section class="container">
+        <form class="post-form" action="#" method="POST" id="edit-post-form">
+            <label for="post-title">Title:</label>
+            <input type="text" name="post-title" id="post-title" required>
+
+            <label for="post-body">Body:</label>
+            <textarea name="post-body" id="post-body" required></textarea>
+
+            <button type="submit" name="edit-post">Save Changes</button>
+        </form>
+
+        <form class="delete-form" action="#" method="POST">
+            <button type="submit" name="delete-post">Delete Post</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 pinkkit. All rights reserved.</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/69c55ad5c0.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('postID');
+        
+        function populateFormFields(postId) {
+            const post = posts[postId];
+
+            document.getElementById('post-title').value = post.title;
+            document.getElementById('post-body').value = post.body;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            populateFormFields(postId);
+        });
+    </script>
+</body>
+</html>

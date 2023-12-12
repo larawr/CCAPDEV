@@ -1,0 +1,249 @@
+* {
+    box-sizing: border-box;
+}
+
+p {
+	background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 99%);
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+	padding: 20px;
+}
+
+header {
+    background-color: #fff;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #FF8F8F;
+}
+
+nav ul li.active a {
+    color: #EA6B6B;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #EA6B6B;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+a.cta-button:hover {
+    background-color: #FF8F8F;
+}
+
+.hero-section {
+	margin-bottom: 20px; 
+}
+
+
+/* Recent Posts section */
+
+.post-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.post-list li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.post-list li h3 {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.post-list li p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.post-list li .post-meta {
+    font-size: 14px;
+    color: #666;
+}
+
+.post-list li .post-meta a {
+    color: #EA6B6B;
+    text-decoration: none;
+}
+
+.post-list li .post-actions {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.post-list li .vote-form {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.post-list li .vote-form button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #bbb;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+/* Styles for upvote and downvote buttons */
+.post-list li .vote-form button img {
+    background: url(upvote.png) no-repeat;
+    width: 16px; 
+    height: 16px; 
+    background-size: 16px 16px; /* Ensure background size matches the icon size */
+}
+
+.post-list li .vote-form button:hover,
+.post-list li .vote-form button:active {
+    color: #EA6B6B;
+}
+
+.post-list li .vote-form .vote-count {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.post-list li a {
+    color: #EA6B6B;
+    text-decoration: none;
+    margin-left: auto;
+    font-weight: bold;
+}
+
+.post-list li a:hover {
+    color: #FF8F8F;
+}
+
+/* Search form styles */
+
+.search-form {
+    margin-bottom: 20px;
+}
+
+.search-form label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.search-form input[type="text"] {
+    width: 60%;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.search-form button {
+    background-color: #EA6B6B;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #FF8F8F;
+}
+
+/* Footer styles */
+
+footer {
+    background-color: #ddd;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul li {
+        margin-right: 10px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .features-section {
+        flex-wrap: wrap;
+    }
+
+    .feature-card {
+        flex-basis: calc(50% - 10px);
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit / Delete Comment - pinkkit</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="static/js/index.js" defer> </script>
+    <script src="static/js/forms.js" defer> </script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+    
+<body>
+    <header>
+        <nav>
+            <ul>
+                 <ul>
+    <li class="active"><a href="/home">Home</a></li>
+    <li><a href="/login" id="login">Login</a></li>
+    <li><a href="/register" id="register">Register</a></li>
+    <li><a href="/logout" id="logout">Logout</a></li>
+    <li><a href="/editprofile" id="editprofile">Edit Profile</a></li>
+</ul>
+        </nav>
+        <h1>Edit / Delete Comment</h1>
+    </header>
+
+    <section class="container">
+        <form class="comment-form" action="#" method="POST" id="edit-comment-form">
+            <label for="comment-body">Comment:</label>
+            <textarea name="comment-body" id="comment-body" required></textarea>
+
+            <button type="submit" name="edit-comment">Save Changes</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 pinkkit. All rights reserved.</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/69c55ad5c0.js" crossorigin="anonymous"></script>
+    <script>
+
+        let commentId; // Declare commentId globally
+
+        // Function to extract query parameters from the URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+    
+        function populateFormFields(commentId) {
+            const comment = getCommentById(commentId);
+    
+            if (comment) {
+                document.getElementById('comment-body').value = comment.body;
+            } else {
+                console.error('Comment not found');
+                // Handle the error, maybe redirect to an error page
+            }
+        }
+    
+        document.addEventListener('DOMContentLoaded', function () {
+            commentId = getQueryParam('commentID');
+            const postId = getQueryParam('postID');
+
+            // Populate the comment form with the comment information
+            populateCommentFormFields(commentId, postId);
+        });
+
+         // Function to populate comment form fields
+         function populateCommentFormFields(commentId, postId) {
+            const comment = getCommentById(postId, commentId);
+
+            if (comment) {
+                document.getElementById('comment-body').value = comment.body;
+            } else {
+                console.error('Comment not found');
+                // Handle the error, maybe redirect to an error page
+            }
+        }
+    
+        // Add event listeners for your forms (edit and delete)
+        document.getElementById('edit-comment-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const newCommentBody = document.getElementById('comment-body').value;
+    
+            // Call the function to edit the comment using commentId and newCommentBody
+            editComment(commentId, newCommentBody);
+        });
+    
+        document.getElementById('delete-comment-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+    
+            // Call the function to delete the comment using commentId
+            deleteComment(commentId);
+        });
+    
+        // Function to get a comment by ID
+        function getCommentById(commentId) {
+            for (const post of posts) {
+                const comment = post.replies.find(comment => comment.accountID === commentId);
+                if (comment) {
+                    return comment;
+                }
+            }
+            return null;
+        }
+    
+        // Function to edit a comment
+        function editComment(commentId, newCommentBody) {
+            const comment = getCommentById(commentId);
+    
+            if (comment) {
+                comment.body = newCommentBody;
+                console.log('Comment edited successfully:', comment);
+                // You might want to update the UI or take other actions here
+            } else {
+                console.error('Comment not found');
+                // Handle the error, maybe redirect to an error page
+            }
+        }
+    
+        // Function to delete a comment
+        function deleteComment(commentId) {
+            // Implement the logic to delete the comment with the given commentId
+            console.log('Comment deleted successfully:', commentId);
+            // You might want to update the UI or take other actions here
+        }
+    </script>
+</body>
+</html>

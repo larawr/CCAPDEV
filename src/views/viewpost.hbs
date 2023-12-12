@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Post - pinkkit</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="static/js/index.js" defer></script>
+    <script src="static/js/forms.js" defer></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postID = urlParams.get('postID');
+            const post = posts[postID];
+            const comments = post.replies;
+
+            $("#post_title").html(post.title);
+            $("#post_body p").html(post.body);
+
+            for (const comment of comments) {
+                const displayName = accounts[comment.accountID].displayname;
+                const commentHtml = `<li><p><strong>${displayName}:</strong> ${comment.body}</p> <a href="editcomment.html?commentID=${comment.commentID}&postID=${post.postID}">Edit Comment</a></li>`;
+                $(".comments").append(commentHtml);
+            }
+        });
+
+        // Placeholder for form submission handling
+        $(".comment-form").submit(function(event) {
+            event.preventDefault();
+            const commentBody = $("#comment-body").val();
+
+            // Placeholder for adding the new comment to the UI
+            const newCommentHtml = `<li><p><strong>Your Display Name:</strong> ${commentBody}</p></li>`;
+            $(".comments").append(newCommentHtml);
+
+            // Placeholder for sending the comment data to the server or API
+            // You can use AJAX to send the comment to your server
+            // Example using jQuery AJAX:
+            // $.post("/api/add-comment", { postID: "123", body: commentBody }, function(data) {
+            //     console.log("Comment added successfully:", data);
+            // });
+
+            // Clear the textarea after submission
+            $("#comment-body").val("");
+
+            console.log("Submitted comment:", commentBody);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>   
+            <ul>
+                <li class="active"><a href="/home">Home</a></li>
+                <li><a href="/login" id="login">Login</a></li>
+                <li><a href="/register" id="register">Register</a></li>
+                <li><a href="/logout" id="logout">Logout</a></li>
+                <li><a href="/editprofile" id="editprofile">Edit Profile</a></li>
+            </ul>
+        </nav>
+        <h1 id="post_title"></h1>
+    </header>
+
+    <section class="container">
+        <article id="post_body">
+            <h2>Post Content</h2>
+            <p></p>
+        </article>
+
+        <h2>Comments</h2>
+        <!-- Use flexbox for comments, dynamically adding each comment -->
+        <ul class="comments"></ul>
+
+        <form class="comment-form" action="#" method="POST">
+            <label for="comment-body">Leave a comment:</label>
+            <textarea name="comment-body" id="comment-body" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 pinkkit. All rights reserved.</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/69c55ad5c0.js" crossorigin="anonymous"></script>
+</body>
+</html>

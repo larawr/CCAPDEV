@@ -1,0 +1,90 @@
+<!--home.hbs-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pinkkit</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="static/js/index.js" defer> </script>
+    <script src="static/js/forms.js" defer> </script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+    <li class="active"><a href="/home">Home </a></li>
+    <li><a href="/login" id="login">Login</a></li>
+    <li><a href="/register" id="register">Register</a></li>
+    <li><a href="/logout" id="logout">Logout</a></li>
+    <li><a href="/editprofile" id="editprofile">Edit Profile</a></li>
+</ul>
+
+        </nav>
+        <h1 id="title-head">{{#if user}}{{user.username}}{{else}}pinkkit{{/if}}</h1>
+    </header>
+
+    <main>
+        
+        <section class="recent-posts-section">
+            <h2>Recent Posts</h2>
+
+            <form class="search-form" action="#" method="GET">
+                <label for="search-input">Search Posts:</label>
+                <input type="text" id="search-input" name="search-input" placeholder="Enter a keyword...">
+                <button type="submit" name="search-button">Search</button>
+            </form>
+		<a href="/newpost" class="cta-button">Create Post</a>
+
+            <ul class="post-list">
+            
+                <!-- Add this part to display the latest posts -->
+<section class="recent-posts-section">
+    <h2>Recent Posts</h2>
+
+    <form class="search-form" action="#" method="GET">
+        <!-- ... -->
+    </form>
+    <a href="/newpost" class="cta-button">Create Post</a>
+
+<!-- Updated home.hbs -->
+<ul class="post-list">
+    {{#each posts}}
+        <li>
+            <h3><a href="/viewpost?postID={{this.postID}}">{{this.title}}</a></h3>
+            <p>{{this.body}}</p>
+            <span class="post-meta">Posted by <a href="#" onclick="moveToProfile({{this.accountID}})">
+                {{lookupUsername this.accountID}}
+            </a> on {{#if this.postedOn}}{{formatDate this.postedOn}}{{else}}Unknown Date{{/if}}</span>
+            <!-- Additional post details and actions go here -->
+
+            <!-- Comment Form -->
+            <form class="comment-form" action="/addcomment" method="POST">
+                <label for="comment-body-{{this.postID}}">Leave a comment:</label>
+                <textarea name="comment-body" id="comment-body-{{this.postID}}" required></textarea>
+                <input type="hidden" name="postID" value="{{this.postID}}">
+                <button type="submit">Submit Comment</button>
+            </form>
+        </li>
+    {{/each}}
+</ul>
+
+
+
+
+
+</section>
+
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 pinkkit. All rights reserved.</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/69c55ad5c0.js" crossorigin="anonymous"></script>
+</body>
+</html>

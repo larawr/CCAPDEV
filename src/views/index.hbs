@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pinkkit</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="static/js/index.js" defer> </script>
+    <script src="static/js/forms.js" defer> </script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            const urlParams = new URLSearchParams(window.location.search);
+            const accountID = urlParams.get('accountID');
+            if(accountID != null){
+                const account = accounts[accountID];
+                $("#title-head").html(account.displayname);
+                $("#title-head").attr("onclick", `moveToProfile(${accountID})`);
+            }
+
+            $(".post-list").on("click", "a.edit-post-link", function (event) {
+                event.preventDefault();
+                moveToEditPost();
+            });
+
+            $(".post-list").on("click", "a.post-link", function (event) {
+                event.preventDefault();
+                const postID = $(this).data("post-id");
+                moveToPost(postID);
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+             <ul>
+    <li class="active"><a href="/home">Home</a></li>
+    <li><a href="/login" id="login">Login</a></li>
+    <li><a href="/register" id="register">Register</a></li>
+    <li><a href="/logout" id="logout">Logout</a></li>
+    <li><a href="/editprofile" id="editprofile">Edit Profile</a></li>
+</ul>
+        </nav>
+        <h1 id="title-head">pinkkit</h1>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h2>Welcome to our Forum</h2>
+            <p>We are a community of developers sharing knowledge and ideas about web development. Join us today and enhance your skills.</p>
+            <a href="register.hbs" class="cta-button">Register Now</a>
+        </section>
+
+        <section class="recent-posts-section">
+            <h2>Recent Posts</h2>
+
+            <form class="search-form" action="#" method="GET">
+                <label for="search-input">Search Posts:</label>
+                <input type="text" id="search-input" name="search-input" placeholder="Enter a keyword...">
+                <button type="submit" name="search-button">Search</button>
+            </form>
+            <a href="newpost.hbs" class="cta-button">Create Post</a>
+
+            <ul class="post-list">
+                <li>
+                    <h3><a href="#" onclick="moveToPost(0)">How to learn web development from scratch?</a></h3>
+                    <p>As the title says. Been interested in starting to learn coding for various use cases. I want to know how exactly I start like what programming language I should learn or what software I should use?</p>
+                    <span class="post-meta">Posted by <a href="#" onclick="moveToProfile(0)">TechW</a> on 2021-10-15</span>
+                    <div class="post-actions">
+                        <form class="vote-form" action="#" method="POST">
+                            <input type="hidden" name="post-id" value="123">
+                            <button type="submit" name="upvote-post"><img src="upvote.png" alt="Upvote"></button>
+                            <span class="vote-count">5</span>
+                            <button type="submit" name="downvote-post"><img src="downvote.png" alt="Downvote"></button>
+                        </form>
+                        <a href="#" onclick="movetoPost(0)">Reply</a>
+                        <a href="#" onclick="movetoEditPost()">Edit Post</a>
+                    </div>
+                </li>
+
+                <!-- Add other post items as needed -->
+
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 pinkkit. All rights reserved.</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/69c55ad5c0.js" crossorigin="anonymous"></script>
+</body>
+</html>
